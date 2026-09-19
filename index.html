@@ -2,1774 +2,2449 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>Una noche para nosotros ✦</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-}
-
-body {
-    background: #020204;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-}
-
-
-/* =====================================================
-   CIELO
-===================================================== */
-
-.sky {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(125, 92, 40, 0.15),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.04),
-            transparent 25%
-        ),
-        linear-gradient(
-            180deg,
-            #020205 0%,
-            #08070b 50%,
-            #030304 100%
-        );
-}
-
+    <meta charset="UTF-8">
 
-/* =====================================================
-   ESTRELLAS
-===================================================== */
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-.stars,
-.stars::before,
-.stars::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(216,181,110,.7) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255,255,255,.5) .7px, transparent 1px);
+    <meta
+        name="theme-color"
+        content="#030305"
+    >
 
-    background-size:
-        130px 150px,
-        190px 200px,
-        90px 110px;
+    <title>Una noche para nosotros ✦</title>
 
-    animation: starsMove 30s linear infinite;
-}
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
 
-.stars::before {
-    opacity: .45;
-    transform: scale(1.5);
-    animation-duration: 45s;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.stars::after {
-    opacity: .25;
-    transform: scale(2);
-    animation-duration: 65s;
-}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
 
-@keyframes starsMove {
 
-    from {
-        transform: translateY(0);
-    }
+    <style>
 
-    to {
-        transform: translateY(-150px);
-    }
+        /* =====================================================
+           01. RESET / BASE
+        ====================================================== */
 
-}
+        :root {
+            --night-0: #020204;
+            --night-1: #06060a;
+            --night-2: #0c0a0d;
 
+            --gold-light: #f4e6bf;
+            --gold: #d7b66f;
+            --gold-dark: #8f6c32;
+            --rose-gold: #c69b83;
 
-/* =====================================================
-   LUNA
-===================================================== */
+            --text-main: #f4eee3;
+            --text-soft: #b8b0a3;
+            --text-muted: #777067;
 
-.moon {
-    position: absolute;
+            --glass:
+                rgba(20, 18, 17, 0.68);
 
-    width: 190px;
-    height: 190px;
+            --border:
+                rgba(215, 182, 111, 0.42);
 
-    right: 8%;
-    top: 8%;
+            --ease-premium:
+                cubic-bezier(.16, 1, .3, 1);
 
-    border-radius: 50%;
+            --ease-envelope:
+                cubic-bezier(.34, 1.56, .64, 1);
+        }
 
-    background:
-        radial-gradient(
-            circle at 35% 35%,
-            #fffef8,
-            #e8dfc9 55%,
-            #a99a7c 100%
-        );
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-    box-shadow:
-        0 0 35px rgba(255,239,194,.35),
-        0 0 100px rgba(255,218,145,.12);
+        html {
+            min-height: 100%;
+            background: var(--night-0);
+        }
 
-    opacity: .75;
+        body {
+            min-width: 320px;
+            min-height: 100dvh;
 
-    animation: moonFloat 7s ease-in-out infinite;
-}
+            margin: 0;
 
-.moon::after {
+            background: var(--night-0);
+            color: white;
 
-    content: "";
+            font-family:
+                "Montserrat",
+                sans-serif;
 
-    position: absolute;
+            overflow-x: hidden;
 
-    width: 190px;
-    height: 190px;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
 
-    border-radius: 50%;
+        button {
+            font: inherit;
+        }
 
-    background: #020205;
 
-    left: 38px;
-    top: -12px;
-}
+        /* =====================================================
+           02. CIELO
+        ====================================================== */
 
-@keyframes moonFloat {
+        .sky {
+            position: fixed;
+            inset: 0;
+
+            z-index: 0;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 42%,
+                    rgba(150, 112, 55, .13),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    ellipse at 15% 15%,
+                    rgba(255,255,255,.045),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    ellipse at 90% 80%,
+                    rgba(114, 78, 40, .08),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #020205 0%,
+                    #08070b 48%,
+                    #030304 100%
+                );
+        }
+
+
+        /* =====================================================
+           03. ESTRELLAS
+        ====================================================== */
+
+        .stars {
+            position: absolute;
+            inset: -20%;
+
+            opacity: .9;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.9) 0 1px,
+                    transparent 1.5px
+                ),
+
+                radial-gradient(
+                    circle,
+                    rgba(215,182,111,.7) 0 .8px,
+                    transparent 1.5px
+                ),
 
-    0%,100% {
-        transform: translateY(0);
-    }
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.45) 0 .6px,
+                    transparent 1px
+                );
+
+            background-size:
+                125px 145px,
+                185px 195px,
+                82px 102px;
+
+            will-change:
+                transform,
+                opacity;
+
+            animation:
+                starDrift 40s linear infinite;
+        }
+
+        .stars::before,
+        .stars::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.9) 0 .8px,
+                    transparent 1.5px
+                );
 
-    50% {
-        transform: translateY(-8px);
-    }
+            will-change:
+                transform,
+                opacity;
+        }
+
+        .stars::before {
+            opacity: .3;
 
-}
+            background-size:
+                230px 250px;
 
+            animation:
+                starDrift 55s linear infinite reverse;
+        }
 
-/* =====================================================
-   ESTRELLAS FUGACES
-===================================================== */
+        .stars::after {
+            opacity: .22;
 
-.shooting-star {
+            background-size:
+                70px 90px;
 
-    position: absolute;
+            animation:
+                starPulse 7s ease-in-out infinite;
+        }
 
-    width: 2px;
-    height: 2px;
+        @keyframes starDrift {
 
-    background: white;
+            from {
+                transform:
+                    translate3d(0, 0, 0);
+            }
 
-    border-radius: 50%;
+            to {
+                transform:
+                    translate3d(0, -160px, 0);
+            }
+        }
 
-    opacity: 0;
-}
+        @keyframes starPulse {
 
-.shooting-star::after {
+            0%,
+            100% {
+                opacity: .12;
+            }
 
-    content: "";
+            50% {
+                opacity: .42;
+            }
+        }
 
-    position: absolute;
 
-    width: 130px;
-    height: 1px;
+        /* =====================================================
+           04. LUNA
+        ====================================================== */
 
-    right: 0;
-    top: 0;
+        .moon {
+            position: absolute;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.7)
-        );
+            width: 125px;
+            height: 125px;
 
-    transform: rotate(-35deg);
-    transform-origin: right;
-}
+            top: 5%;
+            right: -25px;
 
-.star1 {
-    top: 18%;
-    left: 10%;
-    animation: shooting 8s infinite 2s;
-}
+            border-radius: 50%;
 
-.star2 {
-    top: 30%;
-    left: 80%;
-    animation: shooting 10s infinite 5s;
-}
+            background:
+                radial-gradient(
+                    circle at 34% 32%,
+                    #fffef7 0%,
+                    #eee4ce 48%,
+                    #a7987a 100%
+                );
 
-.star3 {
-    top: 10%;
-    left: 60%;
-    animation: shooting 12s infinite 7s;
-}
+            opacity: .72;
 
-@keyframes shooting {
+            box-shadow:
+                0 0 25px rgba(255,239,194,.28),
+                0 0 80px rgba(255,218,145,.11);
 
-    0% {
-        opacity: 0;
-        transform: translate(0,0);
-    }
+            will-change:
+                transform,
+                opacity;
 
-    5% {
-        opacity: 1;
-    }
+            animation:
+                moonBreath 7s ease-in-out infinite;
+        }
 
-    15% {
-        opacity: 0;
-        transform: translate(-300px,180px);
-    }
+        .moon::before {
+            content: "";
 
-    100% {
-        opacity: 0;
-    }
+            position: absolute;
+            inset: 9px;
 
-}
+            border-radius: 50%;
 
+            opacity: .15;
 
-/* =====================================================
-   PARTICULAS
-===================================================== */
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    transparent 0 8px,
+                    rgba(100,90,70,.5) 9px 10px,
+                    transparent 11px
+                );
+        }
 
-.particle {
+        .moon::after {
+            content: "";
 
-    position: absolute;
+            position: absolute;
 
-    width: 3px;
-    height: 3px;
+            width: 125px;
+            height: 125px;
 
-    border-radius: 50%;
+            left: 26px;
+            top: -8px;
 
-    background: #d5b570;
+            border-radius: 50%;
 
-    box-shadow:
-        0 0 10px #d5b570;
+            background: #020205;
+        }
 
-    opacity: .4;
+        @keyframes moonBreath {
 
-    animation:
-        particleFloat 8s infinite ease-in-out;
-}
+            0%,
+            100% {
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
 
-.p1 {
-    left: 15%;
-    bottom: 20%;
-    animation-delay: 1s;
-}
+                opacity: .68;
+            }
 
-.p2 {
-    left: 30%;
-    bottom: 10%;
-    animation-delay: 3s;
-}
+            50% {
+                transform:
+                    translate3d(0, -7px, 0)
+                    scale(1.015);
 
-.p3 {
-    right: 20%;
-    bottom: 25%;
-    animation-delay: 2s;
-}
+                opacity: .8;
+            }
+        }
 
-.p4 {
-    right: 30%;
-    top: 25%;
-    animation-delay: 4s;
-}
 
-.p5 {
-    left: 20%;
-    top: 35%;
-    animation-delay: 5s;
-}
+        /* =====================================================
+           05. ESTRELLAS FUGACES
+        ====================================================== */
 
-@keyframes particleFloat {
+        .shooting-star {
+            position: absolute;
 
-    0%,100% {
-        transform: translateY(0);
-        opacity: .2;
-    }
+            width: 2px;
+            height: 2px;
 
-    50% {
-        transform: translateY(-80px);
-        opacity: .9;
-    }
+            border-radius: 50%;
 
-}
+            background: white;
 
+            opacity: 0;
 
-/* =====================================================
-   INTRO
-===================================================== */
+            will-change:
+                transform,
+                opacity;
+        }
 
-.intro {
+        .shooting-star::after {
+            content: "";
 
-    position: fixed;
+            position: absolute;
 
-    inset: 0;
+            width: 120px;
+            height: 1px;
 
-    z-index: 100;
+            right: 0;
+            top: 0;
 
-    display: flex;
+            transform:
+                rotate(-35deg);
 
-    justify-content: center;
-    align-items: center;
+            transform-origin:
+                right center;
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(30,25,18,.25),
-            rgba(2,2,4,.98) 70%
-        );
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.65)
+                );
+        }
 
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-}
+        .star-one {
+            top: 19%;
+            left: 82%;
 
-.intro.hide {
+            animation:
+                shooting 9s infinite 2s;
+        }
 
-    opacity: 0;
+        .star-two {
+            top: 32%;
+            left: 75%;
 
-    visibility: hidden;
+            animation:
+                shooting 12s infinite 5s;
+        }
 
-    pointer-events: none;
-}
+        .star-three {
+            top: 12%;
+            left: 58%;
 
-.intro-content {
+            animation:
+                shooting 14s infinite 8s;
+        }
 
-    width: 100%;
+        @keyframes shooting {
 
-    display: flex;
+            0% {
+                opacity: 0;
 
-    flex-direction: column;
+                transform:
+                    translate3d(0,0,0);
+            }
 
-    align-items: center;
+            5% {
+                opacity: 1;
+            }
 
-    text-align: center;
+            16% {
+                opacity: 0;
 
-    padding: 25px;
+                transform:
+                    translate3d(-300px,180px,0);
+            }
 
-    animation: introAppear 1.5s ease;
-}
+            100% {
+                opacity: 0;
+            }
+        }
 
-.small-title {
 
-    color: #c8a866;
+        /* =====================================================
+           06. ESTRELLAS ALEATORIAS
+        ====================================================== */
 
-    font-size: 10px;
+        .random-star {
+            position: absolute;
 
-    letter-spacing: 5px;
+            border-radius: 50%;
 
-    text-transform: uppercase;
+            background: white;
 
-    margin-bottom: 25px;
-}
+            pointer-events: none;
 
-.intro h1 {
+            will-change:
+                transform,
+                opacity;
 
-    font-family: "Cormorant Garamond", serif;
+            animation:
+                twinkle var(--duration)
+                ease-in-out infinite;
+        }
 
-    font-size: clamp(55px, 16vw, 100px);
+        @keyframes twinkle {
 
-    font-weight: 300;
+            0%,
+            100% {
+                opacity: .08;
 
-    line-height: .82;
+                transform:
+                    scale(.65);
+            }
 
-    margin-bottom: 28px;
-}
+            50% {
+                opacity: .95;
 
-.intro p {
+                transform:
+                    scale(1.35);
+            }
+        }
 
-    color: #aaa39a;
 
-    font-size: 10px;
+        /* =====================================================
+           07. PARTÍCULAS DORADAS
+        ====================================================== */
 
-    letter-spacing: 2px;
+        .particle {
+            position: absolute;
 
-    line-height: 1.8;
+            width: 3px;
+            height: 3px;
 
-    text-transform: uppercase;
+            border-radius: 50%;
 
-    max-width: 280px;
+            background:
+                var(--gold);
 
-    margin-bottom: 35px;
-}
+            box-shadow:
+                0 0 12px rgba(215,182,111,.7);
 
-.open-button {
+            opacity: .25;
 
-    position: relative;
+            will-change:
+                transform,
+                opacity;
 
-    border: 1px solid rgba(200,168,102,.7);
+            animation:
+                floatParticle 9s ease-in-out infinite;
+        }
 
-    background: transparent;
+        .particle:nth-child(1) {
+            left: 15%;
+            bottom: 20%;
+        }
 
-    color: #d9bb7c;
+        .particle:nth-child(2) {
+            left: 30%;
+            bottom: 10%;
 
-    padding: 16px 30px;
+            animation-delay: 2s;
+        }
 
-    font-family: "Montserrat", sans-serif;
+        .particle:nth-child(3) {
+            right: 20%;
+            bottom: 25%;
 
-    font-size: 10px;
+            animation-delay: 4s;
+        }
 
-    letter-spacing: 3px;
+        .particle:nth-child(4) {
+            right: 30%;
+            top: 30%;
 
-    text-transform: uppercase;
+            animation-delay: 1s;
+        }
 
-    cursor: pointer;
+        .particle:nth-child(5) {
+            left: 20%;
+            top: 35%;
 
-    overflow: hidden;
+            animation-delay: 5s;
+        }
 
-    transition: .4s;
-}
+        @keyframes floatParticle {
 
-.open-button::before {
+            0%,
+            100% {
+                opacity: .15;
 
-    content: "";
+                transform:
+                    translate3d(0,0,0);
+            }
 
-    position: absolute;
+            50% {
+                opacity: .8;
 
-    left: -100%;
-    top: 0;
+                transform:
+                    translate3d(0,-70px,0);
+            }
+        }
 
-    width: 100%;
-    height: 100%;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(200,168,102,.25),
-            transparent
-        );
+        /* =====================================================
+           08. PANTALLA DE INTRODUCCIÓN
+        ====================================================== */
 
-    transition: .6s;
-}
+        .intro {
+            position: fixed;
+            inset: 0;
 
-.open-button:hover::before {
+            z-index: 100;
 
-    left: 100%;
-}
+            min-height: 100svh;
+            min-height: 100dvh;
 
-.open-button:hover {
+            display: grid;
+            place-items: center;
 
-    box-shadow:
-        0 0 30px rgba(200,168,102,.15);
+            padding:
+                max(24px, env(safe-area-inset-left))
+                max(24px, env(safe-area-inset-right));
 
-    transform: translateY(-2px);
-}
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(20,18,15,.25),
+                    rgba(2,2,4,.96) 72%
+                );
 
-@keyframes introAppear {
+            transition:
+                opacity 1.1s var(--ease-premium),
+                visibility 1.1s;
+        }
 
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
+        .intro.hide {
+            opacity: 0;
+            visibility: hidden;
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+            pointer-events: none;
+        }
 
-}
+        .intro-content {
+            width: min(100%, 500px);
 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-/* =====================================================
-   SOBRE
-===================================================== */
+            text-align: center;
 
-.envelope-scene {
+            animation:
+                introAppear 1.5s var(--ease-premium);
+        }
 
-    position: fixed;
+        .small-title {
+            margin-bottom: 22px;
 
-    inset: 0;
+            color:
+                var(--gold);
 
-    z-index: 90;
+            font-size: 9px;
 
-    display: flex;
+            letter-spacing: 4px;
 
-    justify-content: center;
+            line-height: 1.5;
 
-    align-items: center;
+            text-transform: uppercase;
+        }
 
-    pointer-events: none;
+        .intro h1 {
+            margin: 0 0 26px;
 
-    opacity: 0;
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-    visibility: hidden;
-}
+            font-size:
+                clamp(58px, 18vw, 100px);
 
-.envelope-scene.active {
+            font-weight: 300;
 
-    opacity: 1;
+            line-height: .82;
 
-    visibility: visible;
-}
+            letter-spacing: -1px;
 
-.envelope {
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffdf6 10%,
+                    #d8b976 50%,
+                    #fff7e5 90%
+                );
 
-    position: relative;
+            -webkit-background-clip: text;
+            background-clip: text;
 
-    width: 300px;
-    height: 200px;
+            color: transparent;
+        }
 
-    transform-style: preserve-3d;
+        .intro p {
+            max-width: 260px;
 
-    filter:
-        drop-shadow(
-            0 30px 50px rgba(0,0,0,.7)
-        );
-}
+            margin: 0 0 34px;
 
-.envelope-body {
+            color:
+                var(--text-soft);
 
-    position: absolute;
+            font-size: 9px;
 
-    inset: 0;
+            letter-spacing: 2px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #181510,
-            #090807
-        );
+            line-height: 1.9;
 
-    border:
-        1px solid rgba(200,168,102,.6);
+            text-transform: uppercase;
+        }
 
-    box-shadow:
-        inset 0 0 35px rgba(200,168,102,.05);
-}
 
-.envelope-body::before {
+        /* =====================================================
+           09. BOTÓN
+        ====================================================== */
 
-    content: "";
+        .open-button {
+            position: relative;
 
-    position: absolute;
+            min-height: 52px;
 
-    inset: 0;
+            padding:
+                0 28px;
 
-    background:
-        linear-gradient(
-            145deg,
-            transparent 49%,
-            rgba(200,168,102,.45) 50%,
-            transparent 51%
-        );
+            border:
+                1px solid
+                rgba(215,182,111,.65);
 
-    opacity: .6;
-}
+            border-radius: 2px;
 
-.envelope-body::after {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(215,182,111,.04),
+                    rgba(198,155,131,.05)
+                );
 
-    content: "";
+            color:
+                var(--gold-light);
 
-    position: absolute;
+            font-size: 9px;
 
-    inset: 0;
+            letter-spacing: 3px;
 
-    background:
-        linear-gradient(
-            35deg,
-            transparent 49%,
-            rgba(200,168,102,.35) 50%,
-            transparent 51%
-        );
+            text-transform: uppercase;
 
-    opacity: .5;
-}
+            cursor: pointer;
 
-.envelope-flap {
+            overflow: hidden;
 
-    position: absolute;
+            -webkit-tap-highlight-color:
+                transparent;
 
-    left: 0;
-    top: 0;
+            transition:
+                transform .35s var(--ease-premium),
+                box-shadow .35s ease,
+                border-color .35s ease;
+        }
 
-    width: 0;
-    height: 0;
+        .open-button::before {
+            content: "";
 
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-top: 105px solid #242019;
+            position: absolute;
 
-    transform-origin: top center;
+            width: 30px;
+            height: 140px;
 
-    z-index: 5;
+            left: -50px;
+            top: -45px;
 
-    filter:
-        drop-shadow(
-            0 1px 1px rgba(200,168,102,.3)
-        );
+            transform:
+                rotate(25deg);
 
-    transition:
-        transform 1.3s cubic-bezier(.77,0,.18,1);
-}
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,245,210,.65),
+                    transparent
+                );
 
-.envelope-letter {
+            transition:
+                left .8s ease;
+        }
 
-    position: absolute;
+        .open-button::after {
+            content: "";
 
-    width: 260px;
-    height: 170px;
+            position: absolute;
 
-    left: 20px;
-    top: 15px;
+            inset: 0;
 
-    background:
-        linear-gradient(
-            145deg,
-            #f4eee2,
-            #dcd2bf
-        );
+            border-radius: inherit;
 
-    color: #29231b;
+            box-shadow:
+                0 0 0 0
+                rgba(215,182,111,.25);
 
-    z-index: 2;
+            animation:
+                buttonPulse 2.8s ease-in-out infinite;
+        }
 
-    display: flex;
+        .open-button:hover {
+            transform:
+                translateY(-2px);
 
-    justify-content: center;
-    align-items: center;
+            border-color:
+                rgba(244,230,191,.9);
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+            box-shadow:
+                0 10px 35px
+                rgba(215,182,111,.12);
+        }
 
-    font-size: 25px;
+        .open-button:hover::before {
+            left: 120%;
+        }
 
-    letter-spacing: 2px;
+        .open-button:active {
+            transform:
+                scale(.96);
+        }
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.4);
+        .open-button.clicked {
+            animation:
+                buttonClick .5s ease;
+        }
 
-    transition:
-        transform 1.5s cubic-bezier(.16,1,.3,1);
-}
+        @keyframes buttonPulse {
 
-.envelope-seal {
+            0%,
+            100% {
+                box-shadow:
+                    0 0 0 0
+                    rgba(215,182,111,0);
+            }
 
-    position: absolute;
+            50% {
+                box-shadow:
+                    0 0 0 7px
+                    rgba(215,182,111,.035);
+            }
+        }
 
-    z-index: 8;
+        @keyframes buttonClick {
 
-    left: 50%;
+            0% {
+                transform: scale(1);
+            }
 
-    top: 105px;
+            45% {
+                transform: scale(.94);
+            }
 
-    transform:
-        translate(-50%,-50%);
+            100% {
+                transform: scale(1);
+            }
+        }
 
-    width: 48px;
-    height: 48px;
 
-    border-radius: 50%;
+        /* =====================================================
+           10. ESCENA DEL SOBRE
+        ====================================================== */
 
-    display: flex;
+        .envelope-scene {
+            position: fixed;
+            inset: 0;
 
-    justify-content: center;
-    align-items: center;
+            z-index: 90;
 
-    background:
-        radial-gradient(
-            circle,
-            #d8b976,
-            #8e6b32
-        );
+            min-height: 100svh;
+            min-height: 100dvh;
 
-    color: #17130d;
+            display: grid;
+            place-items: center;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+            padding: 20px;
 
-    font-size: 22px;
+            opacity: 0;
+            visibility: hidden;
 
-    box-shadow:
-        0 0 25px rgba(216,185,118,.35);
+            pointer-events: none;
 
-    transition:
-        opacity .5s ease,
-        transform .7s ease;
-}
+            perspective:
+                1200px;
 
-.envelope-scene.opening .envelope-flap {
+            transition:
+                opacity .8s ease,
+                visibility .8s ease;
+        }
 
-    transform:
-        rotateX(180deg);
+        .envelope-scene.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-}
+        .envelope-scene.fade-out {
+            opacity: 0;
+        }
 
-.envelope-scene.opening .envelope-letter {
 
-    transform:
-        translateY(-130px)
-        scale(1.03);
+        /* =====================================================
+           11. SOBRE
+        ====================================================== */
 
-}
+        .envelope {
+            position: relative;
 
-.envelope-scene.opening .envelope-seal {
+            width: min(300px, 82vw);
+            aspect-ratio: 1.5 / 1;
 
-    opacity: 0;
+            transform-style:
+                preserve-3d;
 
-    transform:
-        translate(-50%,-50%)
-        scale(1.5);
-}
+            will-change:
+                transform,
+                opacity;
 
+            filter:
+                drop-shadow(
+                    0 35px 55px rgba(0,0,0,.7)
+                );
 
-/* =====================================================
-   CARTA
-===================================================== */
+            transition:
+                transform 1.8s
+                var(--ease-premium),
+                opacity 1.2s ease;
+        }
 
-.container {
+        .envelope-body {
+            position: absolute;
+            inset: 0;
 
-    position: relative;
+            overflow: hidden;
 
-    z-index: 10;
+            border:
+                1px solid
+                rgba(215,182,111,.62);
 
-    width: 100%;
+            background:
+                linear-gradient(
+                    145deg,
+                    #211d17 0%,
+                    #12100d 48%,
+                    #080706 100%
+                );
 
-    min-height: 100vh;
+            box-shadow:
+                inset 0 0 45px
+                rgba(215,182,111,.055);
+        }
 
-    display: flex;
+        .envelope-body::before,
+        .envelope-body::after {
+            content: "";
 
-    justify-content: center;
+            position: absolute;
+            inset: 0;
 
-    align-items: center;
+            pointer-events: none;
+        }
 
-    padding: 20px;
+        .envelope-body::before {
+            background:
+                linear-gradient(
+                    145deg,
+                    transparent 49.5%,
+                    rgba(215,182,111,.42) 50%,
+                    transparent 50.5%
+                );
+        }
 
-    opacity: 0;
+        .envelope-body::after {
+            background:
+                linear-gradient(
+                    35deg,
+                    transparent 49.5%,
+                    rgba(215,182,111,.28) 50%,
+                    transparent 50.5%
+                );
+        }
 
-    transform:
-        translateY(40px)
-        scale(.97);
 
-    transition:
-        opacity 1.4s ease,
-        transform 1.4s cubic-bezier(.16,1,.3,1);
+        /* =====================================================
+           12. CARTA DENTRO DEL SOBRE
+        ====================================================== */
 
-    pointer-events: none;
-}
+        .envelope-letter {
+            position: absolute;
 
-.container.show {
+            z-index: 2;
 
-    opacity: 1;
+            width: 86%;
+            height: 82%;
 
-    transform:
-        translateY(0)
-        scale(1);
+            left: 7%;
+            top: 9%;
 
-    pointer-events: auto;
-}
+            display: grid;
+            place-items: center;
 
-.card {
+            border:
+                1px solid
+                rgba(150,120,70,.35);
 
-    position: relative;
+            background:
+                linear-gradient(
+                    145deg,
+                    #f7f1e5,
+                    #ded4c0
+                );
 
-    width: min(680px, 100%);
+            color:
+                #332b20;
 
-    max-height: 88vh;
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-    overflow-y: auto;
+            font-size:
+                clamp(22px, 7vw, 30px);
 
-    padding: 65px 55px;
+            letter-spacing: 2px;
 
-    text-align: center;
+            box-shadow:
+                0 12px 30px
+                rgba(0,0,0,.45);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(22,20,17,.94),
-            rgba(8,8,9,.97)
-        );
+            transform:
+                translate3d(0,0,0);
 
-    border:
-        1px solid rgba(198,163,93,.45);
+            will-change:
+                transform,
+                opacity;
+        }
 
-    box-shadow:
-        0 0 0 1px rgba(255,255,255,.02),
-        0 40px 120px rgba(0,0,0,.8),
-        inset 0 0 80px rgba(191,151,78,.025);
 
-    transform:
-        perspective(1200px)
-        rotateX(0deg)
-        rotateY(0deg);
+        /* =====================================================
+           13. SOLAPA 3D
+        ====================================================== */
 
-    animation:
-        cardAppear 1.5s cubic-bezier(.16,1,.3,1);
-}
+        .envelope-flap {
+            position: absolute;
 
-.card::-webkit-scrollbar {
-    display: none;
-}
+            z-index: 5;
 
-@keyframes cardAppear {
+            left: 0;
+            top: 0;
 
-    from {
-        opacity: 0;
+            width: 0;
+            height: 0;
 
-        transform:
-            perspective(1200px)
-            translateY(70px)
-            scale(.92);
-    }
+            border-left:
+                calc(min(300px, 82vw) / 2)
+                solid transparent;
 
-    to {
-        opacity: 1;
+            border-right:
+                calc(min(300px, 82vw) / 2)
+                solid transparent;
 
-        transform:
-            perspective(1200px)
-            translateY(0)
-            scale(1);
-    }
+            border-top:
+                calc(min(300px, 82vw) / 2.85)
+                solid #29231a;
 
-}
+            transform-origin:
+                top center;
 
+            transform-style:
+                preserve-3d;
 
-/* =====================================================
-   BORDES
-===================================================== */
+            backface-visibility:
+                hidden;
 
-.card::before,
-.card::after {
+            will-change:
+                transform;
 
-    content: "";
+            filter:
+                drop-shadow(
+                    0 1px 1px
+                    rgba(215,182,111,.3)
+                );
 
-    position: absolute;
+            transition:
+                transform 1.25s
+                cubic-bezier(.77,0,.18,1);
+        }
 
-    width: 45px;
-    height: 45px;
+        .envelope-flap::after {
+            content: "";
 
-    border-color: #c8a866;
+            position: absolute;
 
-    border-style: solid;
-}
+            left:
+                calc(-1 * (min(300px, 82vw) / 2));
 
-.card::before {
+            top: -1px;
 
-    left: 14px;
-    top: 14px;
+            width:
+                min(300px, 82vw);
 
-    border-width:
-        1px 0 0 1px;
-}
+            height: 2px;
 
-.card::after {
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(244,230,191,.45),
+                    transparent
+                );
+        }
 
-    right: 14px;
-    bottom: 14px;
 
-    border-width:
-        0 1px 1px 0;
-}
+        /* =====================================================
+           14. SELLO DE CERA
+        ====================================================== */
 
-.corner-right,
-.corner-bottom {
+        .envelope-seal {
+            position: absolute;
 
-    position: absolute;
+            z-index: 8;
 
-    width: 45px;
-    height: 45px;
+            left: 50%;
+            top: 52%;
 
-    border-color: #c8a866;
+            width: 50px;
+            height: 50px;
 
-    border-style: solid;
-}
+            display: grid;
+            place-items: center;
 
-.corner-right {
+            border-radius: 50%;
 
-    right: 14px;
-    top: 14px;
+            transform:
+                translate(-50%,-50%);
 
-    border-width:
-        1px 1px 0 0;
-}
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #f0d18b,
+                    #bb8c40 55%,
+                    #76501f 100%
+                );
 
-.corner-bottom {
+            color:
+                #261c0d;
 
-    left: 14px;
-    bottom: 14px;
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-    border-width:
-        0 0 1px 1px;
-}
+            font-size: 23px;
 
+            box-shadow:
+                0 0 20px
+                rgba(215,182,111,.25),
 
-/* =====================================================
-   TEXTO
-===================================================== */
+                inset 0 0 10px
+                rgba(255,244,205,.3);
 
-.eyebrow {
+            will-change:
+                transform,
+                opacity;
 
-    color: #c8a866;
+            transition:
+                transform .7s var(--ease-envelope),
+                opacity .5s ease;
+        }
 
-    font-size: 10px;
+        .envelope-seal::before {
+            content: "";
 
-    letter-spacing: 6px;
+            position: absolute;
+            inset: 4px;
 
-    text-transform: uppercase;
+            border:
+                1px solid
+                rgba(255,244,205,.25);
 
-    margin-bottom: 25px;
-}
+            border-radius: 50%;
+        }
 
-.symbol {
+        .envelope-seal::after {
+            content: "";
 
-    color: #d8b976;
+            position: absolute;
 
-    font-size: 24px;
+            inset: -15px;
 
-    margin-bottom: 15px;
+            border-radius: 50%;
 
-    animation:
-        glow 3s ease-in-out infinite;
-}
+            opacity: 0;
 
-@keyframes glow {
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,239,184,.65),
+                    transparent 65%
+                );
+        }
 
-    0%,100% {
-        opacity: .5;
-        text-shadow: none;
-    }
 
-    50% {
-        opacity: 1;
+        /* =====================================================
+           15. ANIMACIÓN DEL SOBRE
+        ====================================================== */
 
-        text-shadow:
-            0 0 20px rgba(216,185,118,.8);
-    }
+        .envelope-scene.crack .envelope-seal {
+            animation:
+                sealBreak .75s
+                cubic-bezier(.34,1.56,.64,1)
+                forwards;
+        }
 
-}
+        .envelope-scene.crack .envelope-seal::after {
+            animation:
+                sealFlash .65s ease-out forwards;
+        }
 
-.card h1 {
+        .envelope-scene.opening .envelope-flap {
+            transform:
+                rotateX(180deg);
+        }
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+        .envelope-scene.opening .envelope-letter {
+            animation:
+                letterExtract 1.65s
+                var(--ease-envelope)
+                forwards;
+        }
 
-    font-size:
-        clamp(55px, 10vw, 85px);
+        .envelope-scene.zoom .envelope {
+            transform:
+                scale(2.7)
+                translate3d(0,-5px,0);
 
-    line-height: .85;
+            opacity: 0;
+        }
 
-    font-weight: 400;
+        @keyframes sealBreak {
 
-    margin-bottom: 38px;
+            0% {
+                transform:
+                    translate(-50%,-50%)
+                    scale(1)
+                    rotate(0deg);
 
-    background:
-        linear-gradient(
-            120deg,
-            #f7f1e5,
-            #c9a965,
-            #fff8e8
-        );
+                opacity: 1;
+            }
 
-    -webkit-background-clip: text;
+            35% {
+                transform:
+                    translate(-50%,-50%)
+                    scale(1.12)
+                    rotate(-5deg);
 
-    background-clip: text;
+                opacity: 1;
+            }
 
-    color: transparent;
-}
+            65% {
+                transform:
+                    translate(-50%,-50%)
+                    scale(.82)
+                    rotate(5deg);
 
+                opacity: .75;
+            }
 
-/* =====================================================
-   MENSAJE
-===================================================== */
+            100% {
+                transform:
+                    translate(-50%,-50%)
+                    scale(1.45);
 
-.message {
+                opacity: 0;
+            }
+        }
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+        @keyframes sealFlash {
 
-    font-size:
-        clamp(25px, 5vw, 35px);
+            0% {
+                opacity: 0;
+                transform: scale(.5);
+            }
 
-    line-height: 1.35;
+            40% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
 
-    color: #eee8dc;
+            100% {
+                opacity: 0;
+                transform: scale(1.6);
+            }
+        }
 
-    font-weight: 400;
-}
+        @keyframes letterExtract {
 
-.message-line {
+            0% {
+                transform:
+                    translate3d(0,0,0)
+                    scale(1);
+            }
 
-    display: block;
+            45% {
+                transform:
+                    translate3d(0,-75px,0)
+                    scale(1.03);
+            }
 
-    opacity: 0;
+            100% {
+                transform:
+                    translate3d(0,-145px,0)
+                    scale(1.07);
 
-    transform:
-        translateY(20px);
+                opacity: 0;
+            }
+        }
 
-    filter:
-        blur(4px);
 
-    animation:
-        lineAppear .9s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-}
+        /* =====================================================
+           16. CONTENEDOR DE CONTENIDO
+        ====================================================== */
 
-@keyframes lineAppear {
+        .page {
+            position: relative;
 
-    to {
+            z-index: 10;
 
-        opacity: 1;
+            width: 100%;
 
-        transform:
-            translateY(0);
+            min-height: 100dvh;
 
-        filter:
-            blur(0);
-    }
+            padding:
+                max(18px, env(safe-area-inset-top))
+                max(14px, env(safe-area-inset-right))
+                max(28px, env(safe-area-inset-bottom))
+                max(14px, env(safe-area-inset-left));
 
-}
+            display: flex;
 
+            align-items: flex-start;
+            justify-content: center;
 
-/* =====================================================
-   DIVISOR
-===================================================== */
+            overflow-y: auto;
+            overflow-x: hidden;
 
-.divider {
+            -webkit-overflow-scrolling: touch;
 
-    width: 100px;
+            overscroll-behavior-y: contain;
 
-    height: 1px;
+            opacity: 0;
+            visibility: hidden;
 
-    margin: 38px auto;
+            transform:
+                translateY(35px)
+                scale(.98);
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #c8a866,
-            transparent
-        );
+            transition:
+                opacity 1.2s var(--ease-premium),
+                transform 1.2s var(--ease-premium),
+                visibility 0s linear 1.2s;
+        }
 
-    box-shadow:
-        0 0 15px rgba(200,168,102,.25);
-}
+        .page.show {
+            opacity: 1;
+            visibility: visible;
 
+            transform:
+                translateY(0)
+                scale(1);
 
-/* =====================================================
-   FECHA
-===================================================== */
+            transition:
+                opacity 1.2s var(--ease-premium),
+                transform 1.2s var(--ease-premium);
+        }
 
-.date-label {
 
-    color: #858078;
+        /* =====================================================
+           17. CARTA FINAL
+        ====================================================== */
 
-    font-size: 9px;
+        .card {
+            position: relative;
 
-    letter-spacing: 4px;
+            width: min(100%, 680px);
 
-    text-transform: uppercase;
+            margin:
+                auto 0;
 
-    margin-bottom: 12px;
-}
+            padding:
+                58px 24px 52px;
 
-.date {
+            flex-shrink: 0;
 
-    color: #c8a866;
+            text-align: center;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+            border:
+                1px solid
+                var(--border);
 
-    font-size:
-        clamp(28px, 6vw, 40px);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(29,26,22,.76),
+                    rgba(8,8,9,.82)
+                );
 
-    letter-spacing: 1px;
-}
+            box-shadow:
+                0 35px 100px
+                rgba(0,0,0,.72),
 
-.bottom-text {
+                inset 0 0 80px
+                rgba(215,182,111,.025);
 
-    margin-top: 32px;
+            backdrop-filter:
+                blur(18px)
+                saturate(110%);
 
-    color: #68635c;
+            -webkit-backdrop-filter:
+                blur(18px)
+                saturate(110%);
 
-    font-size: 9px;
+            overflow: hidden;
 
-    letter-spacing: 3px;
+            isolation: isolate;
+        }
 
-    line-height: 1.7;
+        .card::before {
+            content: "";
 
-    text-transform: uppercase;
-}
+            position: absolute;
 
-.heart {
+            inset: -1px;
 
-    display: block;
+            z-index: -1;
 
-    margin-top: 25px;
+            padding: 1px;
 
-    color: #c8a866;
+            border-radius: inherit;
 
-    font-size: 18px;
+            background:
+                linear-gradient(
+                    115deg,
+                    transparent 15%,
+                    rgba(244,230,191,.7) 35%,
+                    rgba(198,155,131,.55) 50%,
+                    transparent 70%
+                );
 
-    animation:
-        heartPulse 2s infinite;
-}
+            background-size:
+                250% 100%;
 
-@keyframes heartPulse {
+            animation:
+                borderGlow 7s linear infinite;
 
-    0%,100% {
-        transform: scale(1);
-    }
+            -webkit-mask:
+                linear-gradient(#fff 0 0)
+                content-box,
+                linear-gradient(#fff 0 0);
 
-    50% {
-        transform: scale(1.3);
-    }
+            mask:
+                linear-gradient(#fff 0 0)
+                content-box,
+                linear-gradient(#fff 0 0);
 
-}
+            -webkit-mask-composite:
+                xor;
 
+            mask-composite:
+                exclude;
 
-/* =====================================================
-   ESTRELLAS ALEATORIAS
-===================================================== */
+            pointer-events: none;
+        }
 
-.random-star {
+        .card::after {
+            content: "";
 
-    position: absolute;
+            position: absolute;
 
-    border-radius: 50%;
+            width: 220px;
+            height: 220px;
 
-    background: white;
+            left: 50%;
+            top: -130px;
 
-    pointer-events: none;
-}
+            transform:
+                translateX(-50%);
 
-@keyframes twinkle {
+            border-radius: 50%;
 
-    0%,100% {
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(215,182,111,.08),
+                    transparent 68%
+                );
 
-        opacity: .15;
+            pointer-events: none;
+        }
 
-        transform: scale(.7);
-    }
+        @keyframes borderGlow {
 
-    50% {
+            from {
+                background-position:
+                    200% 0;
+            }
 
-        opacity: 1;
+            to {
+                background-position:
+                    -200% 0;
+            }
+        }
 
-        transform: scale(1.4);
-    }
 
-}
+        /* =====================================================
+           18. ESQUINAS DECORATIVAS
+        ====================================================== */
 
+        .corner {
+            position: absolute;
 
-/* =====================================================
-   RESPONSIVE CELULAR
-===================================================== */
+            width: 34px;
+            height: 34px;
 
-@media (max-width: 600px) {
+            border-color:
+                rgba(215,182,111,.75);
 
-    .moon {
+            border-style: solid;
 
-        width: 125px;
-        height: 125px;
+            pointer-events: none;
+        }
 
-        right: -25px;
-        top: 5%;
-    }
+        .corner-top-left {
+            left: 12px;
+            top: 12px;
 
-    .moon::after {
+            border-width:
+                1px 0 0 1px;
+        }
 
-        width: 125px;
-        height: 125px;
+        .corner-top-right {
+            right: 12px;
+            top: 12px;
 
-        left: 26px;
-        top: -8px;
-    }
+            border-width:
+                1px 1px 0 0;
+        }
 
-    .intro h1 {
+        .corner-bottom-left {
+            left: 12px;
+            bottom: 12px;
 
-        font-size: 64px;
-    }
+            border-width:
+                0 0 1px 1px;
+        }
 
-    .small-title {
+        .corner-bottom-right {
+            right: 12px;
+            bottom: 12px;
 
-        font-size: 9px;
+            border-width:
+                0 1px 1px 0;
+        }
 
-        letter-spacing: 4px;
-    }
 
-    .intro p {
+        /* =====================================================
+           19. CONTENIDO DE LA CARTA
+        ====================================================== */
 
-        font-size: 9px;
+        .eyebrow {
+            margin-bottom: 20px;
 
-        max-width: 240px;
-    }
+            color:
+                var(--gold);
 
-    .open-button {
+            font-size: 8px;
 
-        padding:
-            15px 25px;
+            letter-spacing: 4px;
 
-        font-size: 9px;
-    }
+            line-height: 1.5;
 
-    .envelope {
+            text-transform: uppercase;
+        }
 
-        width: 270px;
-        height: 180px;
-    }
+        .symbol {
+            margin-bottom: 12px;
 
-    .envelope-flap {
+            color:
+                var(--gold-light);
 
-        border-left-width: 135px;
-        border-right-width: 135px;
-        border-top-width: 95px;
-    }
+            font-size: 21px;
 
-    .envelope-letter {
+            line-height: 1;
 
-        width: 230px;
-        height: 150px;
+            animation:
+                symbolGlow 3.2s ease-in-out infinite;
+        }
 
-        left: 20px;
-        top: 15px;
+        @keyframes symbolGlow {
 
-        font-size: 22px;
-    }
+            0%,
+            100% {
+                opacity: .45;
 
-    .envelope-seal {
+                text-shadow:
+                    0 0 0
+                    rgba(215,182,111,0);
+            }
 
-        top: 95px;
+            50% {
+                opacity: 1;
 
-        width: 44px;
-        height: 44px;
-    }
+                text-shadow:
+                    0 0 20px
+                    rgba(215,182,111,.7);
+            }
+        }
 
-    .envelope-scene.opening .envelope-letter {
+        .card h1 {
+            margin:
+                0 0 28px;
 
-        transform:
-            translateY(-110px)
-            scale(1.02);
-    }
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-    .container {
+            font-size:
+                clamp(56px, 17vw, 85px);
 
-        padding: 14px;
-    }
+            font-weight: 400;
 
-    .card {
+            line-height: .8;
 
-        width: 100%;
+            letter-spacing: -1px;
 
-        max-height: 91vh;
+            background:
+                linear-gradient(
+                    120deg,
+                    #fffdf5,
+                    #d4b16a 48%,
+                    #fff7e5
+                );
 
-        padding:
-            50px 23px;
-    }
+            -webkit-background-clip: text;
+            background-clip: text;
 
-    .card::before,
-    .card::after {
+            color: transparent;
+        }
 
-        width: 32px;
-        height: 32px;
-    }
 
-    .corner-right,
-    .corner-bottom {
+        /* =====================================================
+           20. MENSAJE
+        ====================================================== */
 
-        width: 32px;
-        height: 32px;
-    }
+        .message {
+            max-width: 580px;
 
-    .eyebrow {
+            margin:
+                0 auto;
 
-        font-size: 8px;
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-        letter-spacing: 3px;
+            font-size:
+                clamp(25px, 7vw, 35px);
 
-        margin-bottom: 20px;
-    }
+            font-weight: 400;
 
-    .symbol {
+            line-height: 1.38;
 
-        font-size: 20px;
-    }
+            color:
+                var(--text-main);
+        }
 
-    .card h1 {
+        .message-line {
+            display: block;
 
-        font-size: 62px;
+            opacity: 0;
 
-        margin-bottom: 30px;
-    }
+            filter:
+                blur(8px);
 
-    .message {
+            transform:
+                translate3d(0,22px,0);
 
-        font-size: 27px;
+            will-change:
+                transform,
+                opacity,
+                filter;
 
-        line-height: 1.38;
+            animation:
+                lineReveal .95s
+                var(--ease-premium)
+                forwards;
+        }
 
-        padding:
-            0 4px;
-    }
+        @keyframes lineReveal {
 
-    .divider {
+            to {
+                opacity: 1;
 
-        margin:
-            32px auto;
-    }
+                filter:
+                    blur(0);
 
-    .date-label {
+                transform:
+                    translate3d(0,0,0);
+            }
+        }
 
-        font-size: 8px;
 
-        letter-spacing: 3px;
-    }
+        /* =====================================================
+           21. DIVISOR
+        ====================================================== */
 
-    .date {
+        .divider {
+            width: 90px;
+            height: 1px;
 
-        font-size: 30px;
+            margin:
+                30px auto;
 
-        line-height: 1.1;
-    }
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--gold),
+                    transparent
+                );
 
-    .bottom-text {
+            box-shadow:
+                0 0 14px
+                rgba(215,182,111,.2);
+        }
 
-        font-size: 8px;
 
-        letter-spacing: 2px;
+        /* =====================================================
+           22. FECHA
+        ====================================================== */
 
-        max-width: 230px;
+        .date-label {
+            margin-bottom: 9px;
 
-        margin:
-            25px auto 0;
-    }
+            color:
+                var(--text-muted);
 
-}
+            font-size: 8px;
 
+            letter-spacing: 3px;
 
-/* =====================================================
-   CELULARES MUY PEQUEÑOS
-===================================================== */
+            line-height: 1.5;
 
-@media (max-width: 380px) {
+            text-transform: uppercase;
+        }
 
-    .card {
+        .date {
+            color:
+                var(--gold);
 
-        padding:
-            42px 19px;
-    }
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-    .card h1 {
+            font-size:
+                clamp(28px, 8vw, 40px);
 
-        font-size: 55px;
-    }
+            font-weight: 400;
 
-    .message {
+            line-height: 1.08;
 
-        font-size: 24px;
-    }
+            letter-spacing: .5px;
+        }
 
-    .date {
+        .heart {
+            display: block;
 
-        font-size: 27px;
-    }
+            margin-top: 22px;
 
-}
+            color:
+                var(--gold);
 
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-/* =====================================================
-   REDUCIR ANIMACIONES SI EL DISPOSITIVO LO SOLICITA
-===================================================== */
+            font-size: 22px;
 
-@media (prefers-reduced-motion: reduce) {
+            animation:
+                heartPulse 2.2s
+                ease-in-out infinite;
+        }
 
-    *,
-    *::before,
-    *::after {
+        @keyframes heartPulse {
 
-        animation-duration: .01ms !important;
+            0%,
+            100% {
+                transform:
+                    scale(1);
 
-        animation-iteration-count: 1 !important;
+                opacity: .55;
+            }
 
-        transition-duration: .01ms !important;
-    }
+            50% {
+                transform:
+                    scale(1.25);
 
-}
+                opacity: 1;
+            }
+        }
 
-</style>
+        .bottom-text {
+            max-width: 240px;
+
+            margin:
+                20px auto 0;
+
+            color:
+                var(--text-muted);
+
+            font-size: 7px;
+
+            letter-spacing: 2px;
+
+            line-height: 1.8;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           23. TABLETS
+        ====================================================== */
+
+        @media (min-width: 600px) {
+
+            .moon {
+                width: 160px;
+                height: 160px;
+
+                top: 7%;
+                right: 5%;
+            }
+
+            .moon::after {
+                width: 160px;
+                height: 160px;
+
+                left: 32px;
+                top: -10px;
+            }
+
+            .intro h1 {
+                font-size: 86px;
+            }
+
+            .page {
+                align-items: center;
+
+                padding:
+                    30px;
+            }
+
+            .card {
+                padding:
+                    70px 48px 62px;
+            }
+
+            .corner {
+                width: 42px;
+                height: 42px;
+            }
+
+            .eyebrow {
+                font-size: 9px;
+                letter-spacing: 5px;
+            }
+
+            .message {
+                font-size: 32px;
+            }
+        }
+
+
+        /* =====================================================
+           24. DESKTOP
+        ====================================================== */
+
+        @media (min-width: 900px) {
+
+            .moon {
+                width: 190px;
+                height: 190px;
+
+                top: 8%;
+                right: 8%;
+            }
+
+            .moon::after {
+                width: 190px;
+                height: 190px;
+
+                left: 38px;
+                top: -12px;
+            }
+
+            .intro h1 {
+                font-size: 100px;
+            }
+
+            .page {
+                padding:
+                    40px;
+            }
+
+            .card {
+                padding:
+                    75px 55px;
+            }
+
+            .card h1 {
+                font-size: 85px;
+            }
+
+            .message {
+                font-size: 35px;
+            }
+
+            .corner {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+
+        /* =====================================================
+           25. REDUCIR MOVIMIENTO
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .01ms !important;
+            }
+        }
+
+    </style>
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     CIELO
-===================================================== -->
+    <!-- =====================================================
+         CIELO
+    ====================================================== -->
 
-<div class="sky">
+    <div class="sky">
 
-    <div class="stars"></div>
+        <div class="stars"></div>
 
-    <div class="moon"></div>
+        <div class="moon"></div>
 
-    <div class="shooting-star star1"></div>
-    <div class="shooting-star star2"></div>
-    <div class="shooting-star star3"></div>
+        <div class="shooting-star star-one"></div>
+        <div class="shooting-star star-two"></div>
+        <div class="shooting-star star-three"></div>
 
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
-    <div class="particle p5"></div>
-
-</div>
-
-
-<!-- =====================================================
-     INTRO
-===================================================== -->
-
-<section class="intro" id="intro">
-
-    <div class="intro-content">
-
-        <div class="small-title">
-            He preparado algo para ti
-        </div>
-
-        <h1>
-            Una noche<br>
-            especial
-        </h1>
-
-        <p>
-            Hay una invitación esperando por ti
-        </p>
-
-        <button
-            class="open-button"
-            id="openButton">
-
-            Abrir invitación
-
-        </button>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
 
     </div>
 
-</section>
 
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
 
-<!-- =====================================================
-     SOBRE
-===================================================== -->
+    <section
+        class="intro"
+        id="intro"
+        aria-label="Introducción"
+    >
 
-<div
-    class="envelope-scene"
-    id="envelopeScene">
+        <div class="intro-content">
 
-    <div class="envelope">
+            <div class="small-title">
+                He preparado algo para ti
+            </div>
 
-        <div class="envelope-letter">
-            Para ti ♡
-        </div>
+            <h1>
+                Una noche<br>
+                especial
+            </h1>
 
-        <div class="envelope-body"></div>
+            <p>
+                Hay una invitación esperando por ti
+            </p>
 
-        <div class="envelope-flap"></div>
+            <button
+                class="open-button"
+                id="openButton"
+                type="button"
+            >
+                Abrir invitación
+            </button>
 
-        <div class="envelope-seal">
-            ♡
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     CARTA
-===================================================== -->
-
-<main class="container" id="container">
-
-    <section class="card" id="card">
-
-        <span class="corner-right"></span>
-        <span class="corner-bottom"></span>
-
-
-        <div class="eyebrow">
-            Una invitación para ti
-        </div>
-
-
-        <div class="symbol">
-            ✦
-        </div>
-
-
-        <h1>
-            Para ti
-        </h1>
-
-
-        <div
-            class="message"
-            id="message">
-
-            <span class="message-line">
-                Este día quiero llevarte a la cima
-            </span>
-
-            <span class="message-line">
-                y darte un poco de todas las cosas
-            </span>
-
-            <span class="message-line">
-                lindas que mereces.
-            </span>
-
-            <span class="message-line">
-                Ponte más hermosa de lo que ya eres.
-            </span>
-
-        </div>
-
-
-        <div class="divider"></div>
-
-
-        <div class="date-label">
-            Nuestra cita
-        </div>
-
-
-        <div class="date">
-            Domingo · 27 de septiembre
-        </div>
-
-
-        <span class="heart">
-            ♡
-        </span>
-
-
-        <div class="bottom-text">
-            Prepárate para una noche inolvidable
         </div>
 
     </section>
 
-</main>
 
+    <!-- =====================================================
+         SOBRE
+    ====================================================== -->
 
-<script>
+    <div
+        class="envelope-scene"
+        id="envelopeScene"
+        aria-hidden="true"
+    >
 
-/* =====================================================
-   ELEMENTOS
-===================================================== */
+        <div class="envelope">
 
-const intro =
-    document.getElementById("intro");
+            <div class="envelope-letter">
+                Para ti ♡
+            </div>
 
-const button =
-    document.getElementById("openButton");
+            <div class="envelope-body"></div>
 
-const envelopeScene =
-    document.getElementById("envelopeScene");
+            <div class="envelope-flap"></div>
 
-const container =
-    document.getElementById("container");
+            <div class="envelope-seal">
+                ♡
+            </div>
 
-const messageLines =
-    document.querySelectorAll(".message-line");
+        </div>
 
-const sky =
-    document.querySelector(".sky");
+    </div>
 
 
-/* =====================================================
-   CREAR ESTRELLAS EXTRA
-===================================================== */
+    <!-- =====================================================
+         CARTA FINAL
+    ====================================================== -->
 
-for (let i = 0; i < 65; i++) {
+    <main
+        class="page"
+        id="page"
+    >
 
-    const star =
-        document.createElement("div");
+        <article class="card">
 
-    star.className =
-        "random-star";
+            <span
+                class="corner corner-top-left"
+                aria-hidden="true"
+            ></span>
 
-    const size =
-        Math.random() * 2 + .5;
+            <span
+                class="corner corner-top-right"
+                aria-hidden="true"
+            ></span>
 
-    star.style.width =
-        size + "px";
+            <span
+                class="corner corner-bottom-left"
+                aria-hidden="true"
+            ></span>
 
-    star.style.height =
-        size + "px";
+            <span
+                class="corner corner-bottom-right"
+                aria-hidden="true"
+            ></span>
 
-    star.style.left =
-        Math.random() * 100 + "%";
 
-    star.style.top =
-        Math.random() * 100 + "%";
+            <div class="eyebrow">
+                Una invitación para ti
+            </div>
 
-    star.style.opacity =
-        Math.random() * .6 + .1;
 
-    star.style.animation =
-        `twinkle ${2 + Math.random() * 5}s infinite ease-in-out`;
+            <div
+                class="symbol"
+                aria-hidden="true"
+            >
+                ✦
+            </div>
 
-    star.style.animationDelay =
-        `${Math.random() * 5}s`;
 
-    sky.appendChild(star);
+            <h1>
+                Para ti
+            </h1>
 
-}
 
+            <div
+                class="message"
+                id="message"
+            >
 
-/* =====================================================
-   ABRIR INVITACIÓN
-===================================================== */
+                <span class="message-line">
+                    Este día quiero llevarte a la cima
+                </span>
 
-button.addEventListener("click", () => {
+                <span class="message-line">
+                    y darte un poco de todas las cosas
+                </span>
 
-    /* Ocultar pantalla inicial */
+                <span class="message-line">
+                    lindas que mereces.
+                </span>
 
-    intro.classList.add("hide");
+                <span class="message-line">
+                    Ponte más hermosa de lo que ya eres.
+                </span>
 
+            </div>
 
-    /* Mostrar sobre */
 
-    setTimeout(() => {
+            <div class="divider"></div>
 
-        envelopeScene.classList.add("active");
 
-    }, 500);
+            <div class="date-label">
+                Nuestra cita
+            </div>
 
 
-    /* Abrir sobre */
+            <div class="date">
+                Domingo · 27 de septiembre
+            </div>
 
-    setTimeout(() => {
 
-        envelopeScene.classList.add("opening");
+            <span
+                class="heart"
+                aria-hidden="true"
+            >
+                ♡
+            </span>
 
-    }, 1300);
 
+            <div class="bottom-text">
+                Prepárate para una noche inolvidable
+            </div>
 
-    /* Ocultar sobre */
+        </article>
 
-    setTimeout(() => {
+    </main>
 
-        envelopeScene.classList.remove("active");
 
-    }, 3000);
+    <script>
 
+        /* =====================================================
+           01. ELEMENTOS
+        ====================================================== */
 
-    /* Mostrar carta */
+        const intro =
+            document.getElementById("intro");
 
-    setTimeout(() => {
+        const openButton =
+            document.getElementById("openButton");
 
-        container.classList.add("show");
+        const envelopeScene =
+            document.getElementById("envelopeScene");
 
-        animateMessage();
+        const page =
+            document.getElementById("page");
 
-    }, 2800);
+        const messageLines =
+            document.querySelectorAll(".message-line");
 
-});
+        const sky =
+            document.querySelector(".sky");
 
 
-/* =====================================================
-   ANIMAR MENSAJE
-===================================================== */
+        /* =====================================================
+           02. GENERAR ESTRELLAS
+        ====================================================== */
 
-function animateMessage() {
+        const starFragment =
+            document.createDocumentFragment();
 
-    messageLines.forEach((line, index) => {
+        for (let i = 0; i < 70; i++) {
 
-        line.style.animationDelay =
-            `${index * .55}s`;
+            const star =
+                document.createElement("div");
 
-    });
+            star.className =
+                "random-star";
 
-}
+            const size =
+                Math.random() * 1.7 + .5;
 
+            const duration =
+                2.5 + Math.random() * 5;
 
-/* =====================================================
-   EFECTO 3D SOLO COMPUTADOR
-===================================================== */
+            star.style.width =
+                `${size}px`;
 
-document.addEventListener("mousemove", (event) => {
+            star.style.height =
+                `${size}px`;
 
-    if (window.innerWidth < 700) return;
+            star.style.left =
+                `${Math.random() * 100}%`;
 
-    const card =
-        document.getElementById("card");
+            star.style.top =
+                `${Math.random() * 100}%`;
 
-    const x =
-        (window.innerWidth / 2 - event.clientX) / 45;
+            star.style.setProperty(
+                "--duration",
+                `${duration}s`
+            );
 
-    const y =
-        (window.innerHeight / 2 - event.clientY) / 45;
+            star.style.animationDelay =
+                `${Math.random() * 6}s`;
 
-    card.style.transform =
-        `perspective(1200px)
-         rotateY(${x}deg)
-         rotateX(${y}deg)`;
+            starFragment.appendChild(star);
+        }
 
-});
+        sky.appendChild(starFragment);
 
 
-document.addEventListener("mouseleave", () => {
+        /* =====================================================
+           03. ANIMAR TEXTO
+        ====================================================== */
 
-    if (window.innerWidth < 700) return;
+        function revealMessage() {
 
-    const card =
-        document.getElementById("card");
+            messageLines.forEach(
+                (line, index) => {
 
-    card.style.transform =
-        `perspective(1200px)
-         rotateY(0deg)
-         rotateX(0deg)`;
+                    line.style.animationDelay =
+                        `${index * .42}s`;
+                }
+            );
+        }
 
-});
 
+        /* =====================================================
+           04. SECUENCIA PRINCIPAL
+        ====================================================== */
 
-/* =====================================================
-   EVITAR ZOOM ACCIDENTAL
-===================================================== */
+        let opened =
+            false;
 
-document.addEventListener(
-    "gesturestart",
-    event => event.preventDefault()
-);
+        openButton.addEventListener(
+            "click",
+            () => {
 
-</script>
+                if (opened) return;
+
+                opened = true;
+
+                openButton.classList.add(
+                    "clicked"
+                );
+
+                /*
+                    Evitamos que el usuario
+                    dispare nuevamente la
+                    animación.
+                */
+
+                openButton.disabled =
+                    true;
+
+
+                /* ---------------------------------------------
+                   OCULTAR INTRO
+                --------------------------------------------- */
+
+                intro.classList.add(
+                    "hide"
+                );
+
+
+                /* ---------------------------------------------
+                   APARECER SOBRE
+                --------------------------------------------- */
+
+                setTimeout(() => {
+
+                    envelopeScene.classList.add(
+                        "active"
+                    );
+
+                }, 450);
+
+
+                /* ---------------------------------------------
+                   ROMPER SELLO
+                --------------------------------------------- */
+
+                setTimeout(() => {
+
+                    envelopeScene.classList.add(
+                        "crack"
+                    );
+
+                }, 950);
+
+
+                /* ---------------------------------------------
+                   ABRIR SOLAPA
+                --------------------------------------------- */
+
+                setTimeout(() => {
+
+                    envelopeScene.classList.add(
+                        "opening"
+                    );
+
+                }, 1450);
+
+
+                /* ---------------------------------------------
+                   CARTA HACIA LA CÁMARA
+                --------------------------------------------- */
+
+                setTimeout(() => {
+
+                    envelopeScene.classList.add(
+                        "zoom"
+                    );
+
+                }, 2700);
+
+
+                /* ---------------------------------------------
+                   MOSTRAR CARTA FINAL
+                --------------------------------------------- */
+
+                setTimeout(() => {
+
+                    page.classList.add(
+                        "show"
+                    );
+
+                    revealMessage();
+
+                }, 3000);
+
+
+                /* ---------------------------------------------
+                   OCULTAR SOBRE
+                --------------------------------------------- */
+
+                setTimeout(() => {
+
+                    envelopeScene.classList.remove(
+                        "active"
+                    );
+
+                }, 3700);
+
+            }
+        );
+
+
+        /* =====================================================
+           05. EFECTO 3D SOLO DESKTOP
+        ====================================================== */
+
+        const card =
+            document.querySelector(".card");
+
+        let rafId = null;
+
+        document.addEventListener(
+            "mousemove",
+            (event) => {
+
+                if (window.innerWidth < 900) {
+                    return;
+                }
+
+                if (!page.classList.contains("show")) {
+                    return;
+                }
+
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                }
+
+                rafId =
+                    requestAnimationFrame(() => {
+
+                        const x =
+                            (
+                                window.innerWidth / 2
+                                - event.clientX
+                            ) / 65;
+
+                        const y =
+                            (
+                                window.innerHeight / 2
+                                - event.clientY
+                            ) / 65;
+
+                        card.style.transform =
+                            `
+                            perspective(1200px)
+                            rotateY(${x}deg)
+                            rotateX(${y}deg)
+                            translateZ(0)
+                            `;
+                    });
+            }
+        );
+
+
+        document.addEventListener(
+            "mouseleave",
+            () => {
+
+                if (window.innerWidth < 900) {
+                    return;
+                }
+
+                card.style.transform =
+                    `
+                    perspective(1200px)
+                    rotateY(0deg)
+                    rotateX(0deg)
+                    translateZ(0)
+                    `;
+            }
+        );
+
+
+        /* =====================================================
+           06. PREVENIR DOBLE TOQUE DE ZOOM
+        ====================================================== */
+
+        let lastTouchEnd =
+            0;
+
+        document.addEventListener(
+            "touchend",
+            (event) => {
+
+                const now =
+                    Date.now();
+
+                if (
+                    now - lastTouchEnd
+                    <= 300
+                ) {
+                    event.preventDefault();
+                }
+
+                lastTouchEnd =
+                    now;
+            },
+            {
+                passive: false
+            }
+        );
+
+
+        /* =====================================================
+           07. TECLA ENTER / ESPACIO
+        ====================================================== */
+
+        openButton.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    openButton.click();
+                }
+            }
+        );
+
+    </script>
 
 </body>
 </html>
